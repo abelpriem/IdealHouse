@@ -1,0 +1,54 @@
+{
+  "name": "idealhouse_mvc",
+  "version": "1.0.0",
+  "description": "A full web aplication to selling houses",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon ./index.js",
+    "test": "mocha test/*.spec.js",
+    "css": "postcss public/css/tailwind.css -o public/css/app.css --watch",
+    "js": "webpack --watch",
+    "all": "concurrently \"npm run css\" \"npm run js\" ",
+    "db:import": "node ./seed/seeder.js -i",
+    "db:delete": "node ./seed/seeder.js -d"
+  },
+  "keywords": [
+    "MVC",
+    "PUG",
+    "TAILWIND",
+    "MySQL",
+    "SEQUELIZE"
+  ],
+  "author": "Abel Prieto",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "csurf": "^1.11.0",
+    "dotenv": "^16.4.5",
+    "dropzone": "^5.9.3",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.10.2",
+    "nodemailer": "^6.9.14",
+    "pug": "^3.0.3",
+    "sequelize": "^6.37.3",
+    "validator": "^13.12.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "concurrently": "^8.2.2",
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.4",
+    "postcss": "^8.4.39",
+    "postcss-cli": "^11.0.0",
+    "supertest": "^7.0.0",
+    "tailwindcss": "^3.4.4",
+    "webpack": "^5.93.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "type": "module"
+}
