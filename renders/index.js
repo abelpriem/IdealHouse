@@ -5,6 +5,7 @@ import renderRestorePassword from './renderRestorePassword.js'
 import renderHome from './renderHome.js'
 import renderNewProperties from './renderNewProperties.js'
 import renderProperty from './renderProperty.js'
+import renderInitial from './renderInitial.js'
 
 export {
     renderLogin,
@@ -13,5 +14,6 @@ export {
     renderRestorePassword,
     renderHome,
     renderNewProperties,
-    renderProperty
+    renderProperty,
+    renderInitial
 }

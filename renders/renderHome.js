@@ -29,7 +29,7 @@ export default async (req, res) => {
         ])
     
         res.render('page/home', {
-            page: 'Inicio',
+            page: 'Mis propiedades',
             barra: true,
             properties,
             total,

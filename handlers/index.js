@@ -10,6 +10,7 @@ import addImageHandler from './addImageHandler.js'
 import checkEditPropertyHandler from './checkEditPropertyHandler.js'
 import editPropertyHandler from './editPropertyHandler.js'
 import deletePropertyHandler from './deletePropertyHandler.js'
+import retrievePropertiesHandler from './retrievePropertiesHandler.js'
 
 export {
     registerUserHandler,
@@ -23,5 +24,6 @@ export {
     addImageHandler,
     checkEditPropertyHandler,
     editPropertyHandler,
-    deletePropertyHandler
+    deletePropertyHandler,
+    retrievePropertiesHandler
 }

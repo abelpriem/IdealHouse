@@ -6,8 +6,8 @@ import csrf from 'csurf'
 import upload from './middleware/addFile.js'
 import cookieParser from 'cookie-parser'
 import protectRoute from './middleware/protectRoute.js'
-import { registerUserHandler, restoreAccountHandler, confirmAccountHandler, restorePasswordHandler, checkTokenHandler, authenticateUserHandler, createNewPropertieHandler, checkPropertyHandler, addImageHandler, checkEditPropertyHandler, editPropertyHandler, deletePropertyHandler } from './handlers/index.js'
-import { renderLogin, renderRegister, renderRestoreAccount, renderHome, renderNewProperties, renderProperty } from './renders/index.js'
+import { registerUserHandler, restoreAccountHandler, confirmAccountHandler, restorePasswordHandler, checkTokenHandler, authenticateUserHandler, createNewPropertieHandler, checkPropertyHandler, addImageHandler, checkEditPropertyHandler, editPropertyHandler, deletePropertyHandler, retrievePropertiesHandler } from './handlers/index.js'
+import { renderLogin, renderRegister, renderRestoreAccount, renderHome, renderNewProperties, renderProperty, renderInitial } from './renders/index.js'
 
 dotenv.config()
 
@@ -59,7 +59,7 @@ server.get('/auth/restore-password/:token', checkTokenHandler)
 server.post('/auth/restore-password/:token', restorePasswordHandler)
 
 // ROUTE - INIT PAGE
-server.get('/')
+server.get('/', renderInitial)
 
 // ROUTE - CATEGORIES
 server.get('/categories/:id')
@@ -76,6 +76,9 @@ server.get('/home', protectRoute, renderHome)
 // ROUTE - CREATE PROPERTIES
 server.get('/properties/create', protectRoute, renderNewProperties)
 server.post('/properties/create', protectRoute, createNewPropertieHandler)
+
+// ROUTE - RETRIEVE PROPERTIES
+server.get('/properties', retrievePropertiesHandler)
 
 // ROUTE - ADD IMAGES ON PROPERTIES
 server.get('/properties/add-image/:propertyId', protectRoute, checkPropertyHandler)

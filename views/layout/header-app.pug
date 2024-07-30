@@ -1,10 +1,19 @@
 header.bg-gray-500.py-4
     .container.mx-auto.flex.justify-between.items-center
-        a(href="/home")
+        a(href="/")
             h1.text-2xl.text-white.font-extrabold.text-center Ideal
                 span.font-normal House
 
         nav(class="my-5 text-sm md:flex md:items-center md:gap-3 font-bold text-white cursor-pointer hidden")
-            a(href="" class="hover:text-yellow-500") Buscador
-            a(href="" class="hover:text-yellow-500") Perfil
-            a(class="bg-gray-700 py-2 px-10 rounded-lg" href="/auth/login") Cerrar sesión
+            a(href="/auth/register" class="hover:text-yellow-500") Crear cuenta
+            a(href="/auth/login" class="hover:text-yellow-500") Iniciar Sesión
+
+div(class="bg-gray-600 py-5 hidden lg:block")
+    div(class="container mx-auto flex justify-between")
+        a(href="/categories/1" class="text-sm font-bold uppercase text-white hover:text-yellow-500") Casas
+        a(href="/categories/2" class="text-sm font-bold uppercase text-white hover:text-yellow-500") Pisos
+        a(href="/categories/3" class="text-sm font-bold uppercase text-white hover:text-yellow-500") Lofts
+        a(href="/categories/4" class="text-sm font-bold uppercase text-white hover:text-yellow-500") Garajes
+        a(href="/categories/5" class="text-sm font-bold uppercase text-white hover:text-yellow-500") Terrenos
+        a(href="/categories/6" class="text-sm font-bold uppercase text-white hover:text-yellow-500") Cabañas
+        a(href="/categories/7" class="text-sm font-bold uppercase text-white hover:text-yellow-500") Bodegas
