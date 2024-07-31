@@ -13,7 +13,7 @@ block container
                 span(class="font-normal")= property.category.name
 
 
-        div(class="mt-5 md:flex md:gap-4")
+        div(class="mt-5 md:flex md:gap-4 md:items-start")
             div(class="md:w-2/3 bg-white shadow rounded-lg") 
                 img(src=`/uploads/${property.image}` alt=`imagen de la propiedad ${property.title}`)
 
@@ -35,7 +35,7 @@ block container
                         p(class="text-gray-600 font-bold text-xs") Precio 
                             span(class="text-gray-800 block text-lg")= property.price.name
 
-            div(class="md:w-1/3")
+            aside(class="md:w-1/3 bg-white shadow rounded-lg")
                 h3(class="text-center py-10 leading-6 text-2xl font-bold text-gray-900") Ubicación
 
                 div(class="h-96" id="mapa")
@@ -45,6 +45,23 @@ block container
                 div(class="p-5")
                     p(class="text-gray-600 font-bold text-xs") Dirección 
                         span(id="street" class="text-gray-800 block text-lg")= property.street
+
+                    if !isSeller
+
+                        h3(class="text-2xl text-center my-10 font-extrabold text-gray-900") Vendedor
+                        if user
+                            form(method="POST")
+                                input(type="hidden" name="_csrf" value= csrfToken)
+
+                                div(class="space-y-5")
+                                    label(for="message") Mensaje 
+                                    textarea(id="message" name="message" placeholder="Hola. Estoy interesado en recibir información acerca del inmueble. Muchas gracias" class="w-full py-2 border border-gray-300 rounded-lg shadow placeholder-gray-400")
+
+                                    input(type="submit" value="Enviar mensaje" class="bg-indigo-600 text-white font-bold uppercase text-sm w-full p-2 cursor-pointer")
+                        else
+                            div(class="justify-center flex flex-col items-center gap-2")
+                                p(class="text-center") Si deseas contactar al vendedor 
+                                a(class="text-indigo-600" href="/auth/register") debes crear una cuenta
 
 block scripts
     script(src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js")

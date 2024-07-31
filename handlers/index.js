@@ -11,6 +11,7 @@ import checkEditPropertyHandler from './checkEditPropertyHandler.js'
 import editPropertyHandler from './editPropertyHandler.js'
 import deletePropertyHandler from './deletePropertyHandler.js'
 import retrievePropertiesHandler from './retrievePropertiesHandler.js'
+import searchHandler from './searchHandler.js'
 
 export {
     registerUserHandler,
@@ -25,5 +26,6 @@ export {
     checkEditPropertyHandler,
     editPropertyHandler,
     deletePropertyHandler,
-    retrievePropertiesHandler
+    retrievePropertiesHandler,
+    searchHandler
 }

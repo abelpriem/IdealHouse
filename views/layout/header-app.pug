@@ -9,11 +9,19 @@ header.bg-gray-500.py-4
             a(href="/auth/login" class="hover:text-yellow-500") Iniciar Sesión
 
 div(class="bg-gray-600 py-5 hidden lg:block")
-    div(class="container mx-auto flex justify-between")
-        a(href="/categories/1" class="text-sm font-bold uppercase text-white hover:text-yellow-500") Casas
-        a(href="/categories/2" class="text-sm font-bold uppercase text-white hover:text-yellow-500") Pisos
-        a(href="/categories/3" class="text-sm font-bold uppercase text-white hover:text-yellow-500") Lofts
-        a(href="/categories/4" class="text-sm font-bold uppercase text-white hover:text-yellow-500") Garajes
-        a(href="/categories/5" class="text-sm font-bold uppercase text-white hover:text-yellow-500") Terrenos
-        a(href="/categories/6" class="text-sm font-bold uppercase text-white hover:text-yellow-500") Cabañas
-        a(href="/categories/7" class="text-sm font-bold uppercase text-white hover:text-yellow-500") Bodegas
+    div(class="container mx-auto flex justify-between items-center")
+        nav(class="flex gap-4")
+            a(href="/categories/1" class="text-sm font-bold uppercase text-white hover:text-yellow-500") Casas
+            a(href="/categories/2" class="text-sm font-bold uppercase text-white hover:text-yellow-500") Pisos
+            a(href="/categories/3" class="text-sm font-bold uppercase text-white hover:text-yellow-500") Lofts
+            a(href="/categories/4" class="text-sm font-bold uppercase text-white hover:text-yellow-500") Garajes
+            a(href="/categories/5" class="text-sm font-bold uppercase text-white hover:text-yellow-500") Terrenos
+            a(href="/categories/6" class="text-sm font-bold uppercase text-white hover:text-yellow-500") Cabañas
+            a(href="/categories/7" class="text-sm font-bold uppercase text-white hover:text-yellow-500") Bodegas
+
+        form(action="/search" method="POST" class="flex gap-3 items-center")
+            input(type="hidden" name="_csrf" value= csrfToken)
+            label(for="search" class="text-sm uppercase font-bold text-white") Búsqueda
+            input(type="text" id="search" name="search" placeholder="Buscar propiedades" class="p-2 rounded-lg shadow")
+
+            input(type="submit" class="bg-indigo-800 hover:bg-indigo-400 rounded-lg text-white uppercase font-bold p-2 cursor-pointer text-sm" value="Buscar")

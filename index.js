@@ -5,9 +5,9 @@ import db from './data/db.js'
 import csrf from 'csurf'
 import upload from './middleware/addFile.js'
 import cookieParser from 'cookie-parser'
-import protectRoute from './middleware/protectRoute.js'
-import { registerUserHandler, restoreAccountHandler, confirmAccountHandler, restorePasswordHandler, checkTokenHandler, authenticateUserHandler, createNewPropertieHandler, checkPropertyHandler, addImageHandler, checkEditPropertyHandler, editPropertyHandler, deletePropertyHandler, retrievePropertiesHandler } from './handlers/index.js'
-import { renderLogin, renderRegister, renderRestoreAccount, renderHome, renderNewProperties, renderProperty, renderInitial } from './renders/index.js'
+import { protectRoute, authenticate } from './middleware/index.js'
+import { registerUserHandler, restoreAccountHandler, confirmAccountHandler, restorePasswordHandler, checkTokenHandler, authenticateUserHandler, createNewPropertieHandler, checkPropertyHandler, addImageHandler, checkEditPropertyHandler, editPropertyHandler, deletePropertyHandler, retrievePropertiesHandler, searchHandler } from './handlers/index.js'
+import { renderLogin, renderRegister, renderRestoreAccount, renderHome, renderNewProperties, renderProperty, renderInitial, renderCategories, render404 } from './renders/index.js'
 
 dotenv.config()
 
@@ -62,13 +62,13 @@ server.post('/auth/restore-password/:token', restorePasswordHandler)
 server.get('/', renderInitial)
 
 // ROUTE - CATEGORIES
-server.get('/categories/:id')
+server.get('/categories/:categoryId', renderCategories)
 
 // ROUTE - PAGE 404
-server.get('/404')
+server.get('/404', render404)
 
 // ROUTE - SEARCH
-server.post('/search')
+server.post('/search', searchHandler)
 
 // ROUTE - HOME
 server.get('/home', protectRoute, renderHome)
@@ -92,7 +92,7 @@ server.post('/properties/edit/:propertyId', protectRoute, editPropertyHandler)
 server.post('/properties/delete/:propertyId', protectRoute, deletePropertyHandler)
 
 // ROUTE - PUBLIC VIEW
-server.get('/property/:propertyId', renderProperty)
+server.get('/property/:propertyId', authenticate, renderProperty)
 
 // CONNECTION
 server.listen(process.env.PORT_SERVER, () => console.log(`Server online! Listening on port: ${process.env.PORT_SERVER}`))

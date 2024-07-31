@@ -4,23 +4,40 @@ const { SystemError, NotFoundError } = errors
 
 export default async function retrieveSomeProperties() {
     try {
-        const someProperties = await Property.findAll({
-            limit: 3,
-            where: {
-                categoryId: 1
-            },
-            include: [
-                {model: Price, as: 'price'},
-                {model: Category, as: 'category'}
-            ],
-            order: ['createdAt', 'DESC']
-        })
+        const [houses, departments] = await Promise.all([
+            Property.findAll({
+                limit: 3,
+                where: {
+                    categoryId: 1
+                },
+                include: [
+                    {model: Price, as: 'price'},
+                    {model: Category, as: 'category'}
+                ],
+                order: [
+                    ['createdAt', 'DESC']
+                ]
+            }),
+            Property.findAll({
+                limit: 3,
+                where: {
+                    categoryId: 2
+                },
+                include: [
+                    {model: Price, as: 'price'},
+                    {model: Category, as: 'category'}
+                ],
+                order: [
+                    ['createdAt', 'DESC']
+                ]
+            })
+        ])
 
-        if(!someProperties) {
+        if(!houses || !departments) {
             throw new NotFoundError('Aun no hay propiedades creadas. Añada una nueva')
         }
 
-        return someProperties
+        return { houses: houses, departments: departments }
 
     } catch(error) {
         if (error instanceof NotFoundError) {

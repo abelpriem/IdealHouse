@@ -6,6 +6,8 @@ import renderHome from './renderHome.js'
 import renderNewProperties from './renderNewProperties.js'
 import renderProperty from './renderProperty.js'
 import renderInitial from './renderInitial.js'
+import renderCategories from './renderCategories.js'
+import render404 from './render404.js'
 
 export {
     renderLogin,
@@ -15,5 +17,7 @@ export {
     renderHome,
     renderNewProperties,
     renderProperty,
-    renderInitial
+    renderInitial,
+    renderCategories,
+    render404
 }
