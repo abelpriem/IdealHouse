@@ -12,6 +12,10 @@ export default async (req, res) => {
         ]
     })
 
+    if (!property || !property.publicate) {
+        return res.redirect('/404')
+    }
+
     res.render('properties/show', {
         page: 'Propiedad',
         barra: true,

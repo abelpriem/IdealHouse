@@ -6,8 +6,8 @@ import csrf from 'csurf'
 import upload from './middleware/addFile.js'
 import cookieParser from 'cookie-parser'
 import { protectRoute, authenticate } from './middleware/index.js'
-import { registerUserHandler, restoreAccountHandler, confirmAccountHandler, restorePasswordHandler, checkTokenHandler, authenticateUserHandler, createNewPropertieHandler, checkPropertyHandler, addImageHandler, checkEditPropertyHandler, editPropertyHandler, deletePropertyHandler, retrievePropertiesHandler, searchHandler } from './handlers/index.js'
-import { renderLogin, renderRegister, renderRestoreAccount, renderHome, renderNewProperties, renderProperty, renderInitial, renderCategories, render404 } from './renders/index.js'
+import { registerUserHandler, restoreAccountHandler, confirmAccountHandler, restorePasswordHandler, checkTokenHandler, authenticateUserHandler, createNewPropertieHandler, checkPropertyHandler, addImageHandler, checkEditPropertyHandler, editPropertyHandler, deletePropertyHandler, retrievePropertiesHandler, searchHandler, sendMessageHandler, changeStateHandler } from './handlers/index.js'
+import { renderLogin, renderRegister, renderRestoreAccount, renderHome, renderNewProperties, renderProperty, renderInitial, renderCategories, render404, renderMessages } from './renders/index.js'
 
 dotenv.config()
 
@@ -93,6 +93,15 @@ server.post('/properties/delete/:propertyId', protectRoute, deletePropertyHandle
 
 // ROUTE - PUBLIC VIEW
 server.get('/property/:propertyId', authenticate, renderProperty)
+
+// ROUTE - SAVE MESSAGE
+server.post('/property/:propertyId', authenticate, sendMessageHandler)
+
+// ROUTE - VIEW MESSAGES
+server.get('/messages/:propertyId', protectRoute, renderMessages)
+
+// ROUTE - CHANGE PROPERTY STATE
+server.put('/properties/:propertyId', protectRoute, changeStateHandler)
 
 // CONNECTION
 server.listen(process.env.PORT_SERVER, () => console.log(`Server online! Listening on port: ${process.env.PORT_SERVER}`))

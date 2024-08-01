@@ -1,4 +1,4 @@
-import { Price, Category, Property } from '../data/index.js'
+import { Price, Category, Property, Message } from '../data/index.js'
 
 export default async (req, res) => {
     try {
@@ -21,7 +21,8 @@ export default async (req, res) => {
                 where: { userId: id }, 
                 include: [
                 { model: Category, as: 'category'},
-                { model: Price, as: 'price'}
+                { model: Price, as: 'price'},
+                { model: Message, as: 'messages'}
             ]}),
             Property.count({
                 where: { userId: id }

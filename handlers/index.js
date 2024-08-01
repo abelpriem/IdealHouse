@@ -12,6 +12,8 @@ import editPropertyHandler from './editPropertyHandler.js'
 import deletePropertyHandler from './deletePropertyHandler.js'
 import retrievePropertiesHandler from './retrievePropertiesHandler.js'
 import searchHandler from './searchHandler.js'
+import sendMessageHandler from './sendMessageHandler.js'
+import changeStateHandler from './changeStateHandler.js'
 
 export {
     registerUserHandler,
@@ -27,5 +29,7 @@ export {
     editPropertyHandler,
     deletePropertyHandler,
     retrievePropertiesHandler,
-    searchHandler
+    searchHandler,
+    sendMessageHandler,
+    changeStateHandler
 }

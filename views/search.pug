@@ -7,7 +7,8 @@ block container
             if properties.length   
                 div(class="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-5")
                     each property in properties
-                        include ./templates/card
+                        if property.publicate
+                            include ./templates/card
             
             else
                 p(class="text-center text-gray-800 text-sm py-10") No hay resultados

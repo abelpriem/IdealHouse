@@ -4,10 +4,11 @@ block container
         section(class="py-5")
             h2(class="text-center text-4xl font-extrabold py-10")= `${category.name}s en Venta`
 
-            if properties.length   
+            if properties.length 
                 div(class="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-5")
                     each property in properties
-                        include ./templates/card
+                        if property.publicate
+                            include ./templates/card
             
             else
                 p(class="text-center text-gray-800 text-sm py-10") No hay resultados

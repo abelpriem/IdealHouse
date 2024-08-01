@@ -6,7 +6,8 @@ export default {
         mapa: './src/js/map.js',
         addImage: './src/js/addImage.js',
         showMap: './src/js/showMap.js',
-        initMap: './src/js/initMap.js'
+        initMap: './src/js/initMap.js',
+        changeState: './src/js/changeState.js'
     },
     output: {
         filename: '[name].js',

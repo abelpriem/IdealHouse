@@ -102,9 +102,20 @@ const Price = db.define('price', {
     tableName: 'prices'
 })
 
+// MODEL - MESSAGE
+const Message = db.define('message', {
+    message: {
+        type: DataTypes.STRING(200),
+        allowNull: false
+    }
+}, {
+    tableName: 'messages'
+})
+
 export {
     User,
     Property,
     Category,
-    Price
+    Price,
+    Message
 }
