@@ -5,6 +5,8 @@ import errors from '../utils/errors.js'
 const { NotFoundError } = errors
 
 export default async (req, res) => {
+    const { _token } = req.cookies
+
     try {
         const categories = await retrieveCategories()
         const prices = await retrievePrices()
@@ -17,7 +19,8 @@ export default async (req, res) => {
             categories,
             prices,
             houses,
-            departments
+            departments,
+            token: _token
         })
 
     } catch(error) {

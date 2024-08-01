@@ -4,6 +4,7 @@ const { NotFoundError, ContentError} = errors
 
 export default async (req, res) => {
     const { categoryId } = req.params
+    const { _token } = req.cookies
 
     try {
         const { category, properties } = await retrieveCategoriesInfo(categoryId)
@@ -13,7 +14,8 @@ export default async (req, res) => {
             page: 'Categorías',
             csrfToken: req.csrfToken(),
             category,
-            properties
+            properties,
+            token: _token
         })
     } catch(error) {
         let status = 500
