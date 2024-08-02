@@ -69,11 +69,11 @@
     }
 
     const filterCategory = (property) => {
-        return filters.category ? property.categoryId === filters.category : property
+        return filters.category ? +property.categoryId === filters.category : property
     }
 
     const filterPrice = (property) => {
-        return filters.price ? property.priceId === filters.price : property
+        return filters.price ? +property.priceId === filters.price : property
     }
 
     obteinProperties()
