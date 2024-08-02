@@ -4,7 +4,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const db = new Sequelize(process.env.URL_MYSQL_IDEALHOUSE, process.env.MYSQL_USER, process.env.MYSQL_PASSWORD, {
-    host: 'localhost',
+    host: process.env.HOST,
     port: process.env.PORT_MYSQL, 
     dialect: 'mysql',
     define: {
