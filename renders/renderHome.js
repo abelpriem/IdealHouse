@@ -1,4 +1,4 @@
-import { Price, Category, Property, Message } from '../data/index.js'
+import { Price, Category, Property, Message, User } from '../data/index.js'
 
 export default async (req, res) => {
     try {
@@ -14,7 +14,7 @@ export default async (req, res) => {
         const limit = 5
         const offset = ((actualPage * limit) - limit)
 
-        const [properties, total] = await Promise.all([
+        const [properties, total, user] = await Promise.all([
             await Property.findAll({ 
                 limit,
                 offset,

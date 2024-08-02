@@ -6,8 +6,8 @@ import csrf from 'csurf'
 import upload from './middleware/addFile.js'
 import cookieParser from 'cookie-parser'
 import { protectRoute, authenticate } from './middleware/index.js'
-import { registerUserHandler, restoreAccountHandler, confirmAccountHandler, restorePasswordHandler, checkTokenHandler, authenticateUserHandler, createNewPropertieHandler, checkPropertyHandler, addImageHandler, checkEditPropertyHandler, editPropertyHandler, deletePropertyHandler, retrievePropertiesHandler, searchHandler, sendMessageHandler, changeStateHandler } from './handlers/index.js'
-import { renderLogin, renderRegister, renderRestoreAccount, renderHome, renderNewProperties, renderProperty, renderInitial, renderCategories, render404, renderMessages } from './renders/index.js'
+import { registerUserHandler, restoreAccountHandler, confirmAccountHandler, restorePasswordHandler, checkTokenHandler, authenticateUserHandler, createNewPropertieHandler, checkPropertyHandler, addImageHandler, checkEditPropertyHandler, editPropertyHandler, deletePropertyHandler, retrievePropertiesHandler, searchHandler, sendMessageHandler, changeStateHandler, changePasswordHandler } from './handlers/index.js'
+import { renderLogin, renderRegister, renderRestoreAccount, renderHome, renderNewProperties, renderProperty, renderInitial, renderCategories, render404, renderMessages, renderProfile } from './renders/index.js'
 
 dotenv.config()
 
@@ -102,6 +102,12 @@ server.get('/messages/:propertyId', protectRoute, renderMessages)
 
 // ROUTE - CHANGE PROPERTY STATE
 server.put('/properties/:propertyId', protectRoute, changeStateHandler)
+
+// ROUTE - PROFILE
+server.get('/profile', protectRoute, renderProfile)
+
+// ROUTE - CHANGE PASSWORD
+server.post('/profile/change-password/:userId', protectRoute, changePasswordHandler)
 
 // CONNECTION
 server.listen(process.env.PORT_SERVER, () => console.log(`Server online! Listening on port: ${process.env.PORT_SERVER}`))

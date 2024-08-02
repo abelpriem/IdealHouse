@@ -9,6 +9,7 @@ import renderInitial from './renderInitial.js'
 import renderCategories from './renderCategories.js'
 import render404 from './render404.js'
 import renderMessages from './renderMessages.js'
+import renderProfile from './renderProfile.js'
 
 export {
     renderLogin,
@@ -21,5 +22,6 @@ export {
     renderInitial,
     renderCategories,
     render404,
-    renderMessages
+    renderMessages,
+    renderProfile
 }

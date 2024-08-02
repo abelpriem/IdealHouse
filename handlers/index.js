@@ -14,6 +14,7 @@ import retrievePropertiesHandler from './retrievePropertiesHandler.js'
 import searchHandler from './searchHandler.js'
 import sendMessageHandler from './sendMessageHandler.js'
 import changeStateHandler from './changeStateHandler.js'
+import changePasswordHandler from './changePasswordHandler.js'
 
 export {
     registerUserHandler,
@@ -31,5 +32,6 @@ export {
     retrievePropertiesHandler,
     searchHandler,
     sendMessageHandler,
-    changeStateHandler
+    changeStateHandler,
+    changePasswordHandler
 }
